@@ -36,7 +36,7 @@ public class CustomerCheck
         }
         for(int n = 0; n < check.size(); n++)
         {
-            if(check.get(n).isDailySpecial() == false)
+            if(check.get(n).isDailySpecial())
             {
                 return false;
             }
@@ -48,13 +48,22 @@ public class CustomerCheck
     public double calculateCheck()
     {
         double pay = totalPrices();
+        int customers = 0;
+        for(int n = 0; n < check.size(); n++)
+        {
+            if (check.get(n).isEntree())
+            {
+                customers++;
+            }
+        }
+        if(customers >= 6)
+        {
+            pay = 1.2 * pay;
+        }
+
         if(couponApplies())
         {
-            pay *= 0.75;
-        }
-        if(check.size() >= 6)
-        {
-            pay = pay + 0.2*pay;
+            pay = pay - totalPrices() * 0.25;
         }
         return pay;
     }
