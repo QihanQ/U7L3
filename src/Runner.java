@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Runner
 {
+    private int classer = 0;
     public static int passedTests = 0;
     public static int failedTests = 0;
     public static ArrayList<MenuItem> testItems = new ArrayList<MenuItem>();
